@@ -40,7 +40,7 @@ fn contains_infinite_loops(matrix: &mut Vec<Vec<char>>, pos: (i32, i32), obs: (i
         }
         
         operations.insert((current_pos, DIRS[current_dir]));
-        let (new_pos, amount_moved, is_inside, _) = move_dir(&mut clone, current_pos, DIRS[current_dir]);
+        let (new_pos, _amount_moved, is_inside, _) = move_dir(&mut clone, current_pos, DIRS[current_dir]);
         current_dir = (current_dir + 1) % DIRS.len();
         current_pos = new_pos;
         
@@ -58,7 +58,7 @@ pub fn part_two(input: &str) -> Option<u32> {
     let mut current_pos = pos.clone();
 
     loop {
-        let (new_pos, amount_moved, is_inside, new_bloc) = move_dir(&mut matrix, current_pos, DIRS[current_dir]);
+        let (new_pos, _amount_moved, is_inside, new_bloc) = move_dir(&mut matrix, current_pos, DIRS[current_dir]);
         current_dir = (current_dir + 1) % DIRS.len();
         possible_blocs.extend(new_bloc);
         current_pos = new_pos;
@@ -74,7 +74,7 @@ pub fn part_two(input: &str) -> Option<u32> {
             count += 1;
         }
     }
-    Some(count)
+    Some(count - 1)
 }
 
 fn create_matrix_and_start(input: &str) -> (Vec<Vec<char>>, (i32, i32)) {
@@ -129,12 +129,12 @@ mod tests {
     #[test]
     fn test_part_one() {
         let result = part_one(&advent_of_code::template::read_file("examples", DAY));
-        assert_eq!(result, None);
+        assert_eq!(result, Some(41));
     }
 
     #[test]
     fn test_part_two() {
         let result = part_two(&advent_of_code::template::read_file("examples", DAY));
-        assert_eq!(result, None);
+        assert_eq!(result, Some(5));
     }
 }
