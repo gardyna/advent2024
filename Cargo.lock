@@ -24,6 +24,7 @@ dependencies = [
  "chrono",
  "dhat",
  "itertools",
+ "num-traits",
  "pico-args",
  "regex",
  "rustc-hash 2.1.0",

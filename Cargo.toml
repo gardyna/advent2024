@@ -31,3 +31,4 @@ rustc-hash = "2.1.0"
 # Solution dependencies
 itertools = "0.13.0"
 regex = "1.11.1"
+num-traits = "0.2.17"
